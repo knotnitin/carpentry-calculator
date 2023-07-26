@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyblock Carpentry Exp Calculator</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Skyblock - Carpentry 50 Calculator</h1>
+    <p>This program calculates the number of condensed fermento you need to craft to reach Carpentry level 50. It takes
+        the current price of fermento on the bazaar, your current Carpentry level, and any Carpentry Wisdom modifiers like
+        Derpy or skill exp boosting events.
+    </p>
+    <p>The current price of one fermento is: </p>
+    <h2>Enter your minecraft username and toggle the modifiers as necessary to see how far you are from Carpentry 50</h2>
+    <label for="name">Name: </label>
+    <input type="text" id="name"></input>
+
+    <div class="exp-modifier">
+        Current skill exp modifiers active:
+        <input type="radio" name="exp_modifier" id="0" value="0" checked="checked">
+        <label>0 %</label>
+        <input type="radio" name="exp_modifier" id="10" value="10">
+        <label>10 %</label>
+        <input type="radio" name="exp_modifier" id="15" value="15">
+        <label>15 %</label>
+        <input type="radio" name="exp_modifier" id="20" value="20">
+        <label>20 %</label>
+    </div>
+
+    <div class="other">
+        <div class="booster derpy">
+            <label>Derpy?</label>
+            <input type="checkbox" name="derpy" id="derpy" value="true">
+            <p class="info-text">Provides +50 Carpentry wisdom when elected mayor</p>
+        </div>
+        <div class="booster bal">
+            <label>Bal pet?</label>
+            <input type="checkbox" name="bal" id="bal" value="true">
+            <p class="info-text">Gain 15% more Carpentry wisdom while inside the Magma Fields (only legendary variant, level 100)</p>
+        </div>
+    </div>
+    <button class="calculate">Calculate</button>
+    <div class="output">
+        
+    </div>
+</body>
+</html>
