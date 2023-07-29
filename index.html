@@ -4,48 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skyblock Carpentry Exp Calculator</title>
+    <link rel="icon" href="images/carpentry-logo.png">
     <link href="styles.css" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+    <script src="script.js" type="module" defer></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Skyblock - Carpentry 50 Calculator</h1>
-    <p>This program calculates the number of condensed fermento you need to craft to reach Carpentry level 50. It takes
-        the current price of fermento on the bazaar, your current Carpentry level, and any Carpentry Wisdom modifiers like
-        Derpy or skill exp boosting events.
-    </p>
-    <p>The current price of one fermento is: </p>
-    <h2>Enter your minecraft username and toggle the modifiers as necessary to see how far you are from Carpentry 50</h2>
-    <label for="name">Name: </label>
-    <input type="text" id="name"></input>
-
-    <div class="exp-modifier">
-        Current skill exp modifiers active:
-        <input type="radio" name="exp_modifier" id="0" value="0" checked="checked">
-        <label>0 %</label>
-        <input type="radio" name="exp_modifier" id="10" value="10">
-        <label>10 %</label>
-        <input type="radio" name="exp_modifier" id="15" value="15">
-        <label>15 %</label>
-        <input type="radio" name="exp_modifier" id="20" value="20">
-        <label>20 %</label>
-    </div>
-
-    <div class="other">
-        <div class="booster derpy">
-            <label>Derpy?</label>
-            <input type="checkbox" name="derpy" id="derpy" value="true">
-            <p class="info-text">Provides +50 Carpentry wisdom when elected mayor</p>
-        </div>
-        <div class="booster bal">
-            <label>Bal pet?</label>
-            <input type="checkbox" name="bal" id="bal" value="true">
-            <p class="info-text">Gain 15% more Carpentry wisdom while inside the Magma Fields (only legendary variant, level 100)</p>
-        </div>
-    </div>
-    <button class="calculate">Calculate</button>
-    <div class="output">
+    <h1 class="heading">Skyblock - Carpentry 50 Calculator</h1>
+    <div class="container">
+        <div class="information">
+            <div class="description">
+                This program calculates the number of Condensed Fermento to craft to reach Carpentry level 50 based on your current carpentry level.
+                It takes the current price of fermento on the bazaar, and any Carpentry Wisdom modifiers like Derpy or skill exp boosting events.
+            </div>
+            <p>Assume the current price of <img src="images/fermento.png"> fermento is 256000 coins(may vary) </p>
+            <!-- <h2>Enter your current Carpentry level and toggle the modifiers as necessary to see how far you are from Carpentry 50</h2> -->
+            <label for="level">Current Carpentry Level: </label>
+            <input type="number" id="level" min="0" max="49"></input>
         
+            <div class="exp-modifier">
+                Current skill exp modifiers active:
+                <input type="radio" name="exp_modifier" id="0" value="0" checked="checked">
+                <label>0 %</label>
+                <input type="radio" name="exp_modifier" id="10" value="10">
+                <label>10 %</label>
+                <input type="radio" name="exp_modifier" id="15" value="15">
+                <label>15 %</label>
+                <input type="radio" name="exp_modifier" id="20" value="20">
+                <label>20 %</label>
+            </div>
+        
+            <div class="other">
+                <div class="booster derpy">
+                    <img>
+                    <label>Derpy?</label>
+                    <input type="checkbox" name="derpy" id="derpy" value="true">
+                    <p class="info-text">Provides +50 Carpentry wisdom when elected mayor</p>
+                </div>
+                <div class="booster bal">
+                    <img src="images/bal-pet.png">
+                    <label>Bal pet?</label>
+                    <input type="checkbox" name="bal" id="bal" value="true">
+                    <p class="info-text">Gain 15% more Carpentry wisdom while inside the Magma Fields (only legendary variant, level 100)</p>
+                </div>
+                <div class="booster cookie">
+                    <img src="images/booster-cookie.gif">
+                    <label>Booster Cookie?</label>
+                    <input type="checkbox" name="cookie" id="cookie" value="true">
+                    <p class="info-text">Gain +25 Carpentry wisdom if a booster cookie is consumed</p>
+                </div>
+            </div>
+            <button class="calculate">Calculate</button>
+        </div>
+        <div class="output">
+            
+        </div>
     </div>
 </body>
 </html>

@@ -1,5 +1,37 @@
+body{
+    font-family: Helvetica;
+    margin: 0% 7.5%;
+    font-size: 16px;
+}
+
+.heading{
+    font-family: Raleway;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.description{
+    font-weight: bold;
+}
+
+.information, .output{
+    width: 48%;
+}
+
 .info-text{
     font-size: 12px;
     font-style: italic;
     color: gray;
+}
+
+img{
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
 }
