@@ -1,15 +1,18 @@
 body{
     font-family: Helvetica;
-    margin: 0% 7.5%;
     font-size: 16px;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .heading{
     font-family: Raleway;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 .container{
+    margin: 0% 7.5%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -34,4 +37,40 @@ img{
     width: 24px;
     height: 24px;
     vertical-align: middle;
+}
+
+.footer{
+    background-color: #f6f6f6;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+}
+
+.link{
+    padding-top: 3px;
+    text-decoration: none;
+    color: black;
+    padding-right: 30px;
+}
+
+@media only screen and (max-width: 530px){
+    /* .container{
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    } */
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer{
+        justify-content: center;
+    }
 }
