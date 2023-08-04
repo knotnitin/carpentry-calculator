@@ -1,20 +1,32 @@
 import {
     CARPENTRY_LEVELS,
     COND_FERM_EXP,
-    FERM_COST,
+    FERM_SELL,
     COND_FERM_SELL
 } from './carpentryData.js'
 
 const TOTAL_CARPENTRY_EXP = 55172425 // Total carpentry exp required to reach level 50
 let remainingEXP = 0 // Exp left, assign value when IGN is entered
 let fermentos = 0 // Amount of fermentos needed to buy
-let fermentoCost = FERM_COST // Bazaar price of fermento
+let fermentoCost = 0 // Bazaar price of fermento
 let totalCost = 0 // Amount of money needed
 // Modifier variables
 let expModifier = 0
 let derpyActive = false
 let balPet = false
 let cookie = false
+// Setting up some stuff
+// getFermentoCost.then(x => {
+//     console.log(x)
+//     fermentoCost = x
+// })
+// fermentoCost = fermCostWait()
+fermentoCost = Promise.resolve(getFermentoCost())
+fermentoCost.then(value => {
+    console.log(`Value is ${value}`)
+    fermentoCost = value
+})
+
 
 
 
@@ -73,10 +85,13 @@ function generateOutput(expModifier, derpy, bal, cookie, level){
     let derpyString = derpy ? "Derpy in office, " : "Derpy not in office, "
     let balString = bal ? "and while using a Level 100 Legendary Bal pet while in the Magma Fields" : "and without a Bal Pet"
     $(".output").html(
-        `<div class="description">At level ${level}, you need ${remainingEXP} more Carpentry exp to reach Level 50. </div> 
+        `
+        <div class="description">At level ${level}, you need ${remainingEXP} more Carpentry exp to reach Level 50. </div> 
         <p>With a ${expModifier}% skill exp boost, ${cookieString}${derpyString}${balString}, you would need: </p>
         <p>${fermentos} <img src="images/fermento.png"> Fermentos to craft ${fermentos/9} <img src="images/condensed-fermento.png"> Condensed Fermentos</p>
-        <p>Costing you ${totalCost} <img src="images/coin.png"> coins.</p>`
+        <p>Costing you ${totalCost} <img src="images/coin.png"> coins.</p>
+        <p>The current cost of Fermento on the Bazaar is ${fermentoCost} coins</p>
+        `
         )
     
     console.log(`Current skill exp modifier: ${expModifier}`)
@@ -92,3 +107,17 @@ function generateOutput(expModifier, derpy, bal, cookie, level){
 // } - With JavaScript alone.
 
 // <p>If you sell the Condensed fermento back to NPCs, it would cost ${(totalCost - COND_FERM_SELL * (fermentos/9)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+
+// API Calls
+async function getFermentoCost(){
+    // Gets price of Fermento from bazaar and rounds it
+    const requestURL = "https://api.hypixel.net/skyblock/bazaar"
+    const request = new Request(requestURL)
+    const response = await fetch(request)
+    const bazaar = await response.json()
+    const fermCost = Math.round(bazaar.products["FERMENTO"].quick_status.sellPrice)
+    return fermCost
+}
+
+// console.log(fermDescription)
+// console.log(getFermentoCost())
