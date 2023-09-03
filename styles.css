@@ -34,6 +34,21 @@ body{
     color: gray;
 }
 
+.info-text.username{
+    margin: 5px 0px;
+    color: red;
+    font-style: normal;
+    display: none;
+}
+
+.info-text.profile{
+    margin: 5px 0px;
+}
+
+.exp-modifier{
+    margin: 10px 0px;
+}
+
 img{
     width: 24px;
     height: 24px;
@@ -74,6 +89,10 @@ img{
 
     .information, .output{
         width: 90%;
+    }
+
+    .calculate{
+        margin-bottom: 5px;
     }
 
     .footer{

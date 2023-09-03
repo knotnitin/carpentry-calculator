@@ -52,6 +52,13 @@ export const CARPENTRY_LEVELS = [
     { Level: 50, "Total XP": 55172425 },
   ];
 
+export const PROFILE_NAMES = [
+  "Apple", "Banana", "Blueberry", "Coconut", "Cucumber", "Grapes",
+  "Kiwi", "Lemon", "Lime", "Mango", "Orange", "Papaya", "Pear",
+  "Peach", "Pineapple", "Pomegranate", "Raspberry", "Strawberry",
+  "Tomato", "Watermelon", "Zucchini", ""
+]
+
 export const COND_FERM_EXP = 67500 // amount of exp from crafting condensed fermento
 export const FERM_SELL = 250000 // Cost of fermento
 export const COND_FERM_SELL = 2250000 // NPC sell price of condensed fermento
