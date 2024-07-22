@@ -26,6 +26,7 @@ const warning = document.querySelector('.info-text.username')
 getJSON(`https://sky.shiiyu.moe/api/v2/bazaar`, data=> {
     // console.log(data.FERMENTO.sellPrice)
     fermentoCost = Math.ceil(data.FERMENTO.sellPrice)
+    // console.log(fermentoCost) -> Debugging
 })
 
 
@@ -65,9 +66,12 @@ function getCapentrySkill(){
         displayError("notprofile")
     }
     else{
+        // console.log(currentPlayer) -> Debugging
         getJSON(`https://sky.shiiyu.moe/api/v2/profile/${currentPlayer}`, data=>{
         // Look for the specific profile mentioned, or else take the default
+        // console.log(data) -> Debugging
         let profiles = data.profiles
+        // console.log(profiles) -> Debugging
         if(data == null){
             // never played skyblock before
             displayError("missingprofile")
@@ -79,7 +83,8 @@ function getCapentrySkill(){
             profNames.forEach((profileName) => {
                 const profileData = profiles[profileName]
                 if(profileData.current == true){
-                    currentEXP = profileData.raw.experience_skill_carpentry
+                    console.log(profileData.raw.player_data.experience)
+                    currentEXP = profileData.raw.player_data.experience.SKILL_CARPENTRY
                     console.log(`Current player EXP = ${currentEXP} from profile ${profileData.cute_name}`)
                     foundProfile = true
                 }
@@ -90,7 +95,8 @@ function getCapentrySkill(){
             profNames.forEach((profileName) => {
                 const profileData = profiles[profileName]
                 if(profileData.cute_name == currentProfile){
-                    currentEXP = profileData.raw.experience_skill_carpentry
+                    console.log(`Found cute_name with profilie ${currentProfile}`)
+                    currentEXP = profileData.raw.player_data.experience.SKILL_CARPENTRY
                     console.log(`Current player EXP = ${currentEXP} from profile ${profileData.cute_name}`)
                     foundProfile = true
                 }
@@ -133,6 +139,11 @@ function getValues(){
     cookie = $('input[name="cookie"]').prop('checked')
     remainingEXP = Math.round(getRemainingEXP(currentEXP))
     let level  = getLevel(currentEXP)
+    console.log(level)
+    if(level == 50) {
+        maxLevelOutput()
+        return
+    }
     fermentos = getFermentos(remainingEXP)
     totalCost = fermentos * fermentoCost
     // Calculate total EXP needed to reach level 50
@@ -199,6 +210,13 @@ function generateOutput(expModifier, derpy, bal, cookie, level){
     // console.log(`Cookie buff? ${cookie}`)
     // console.log(`Level: ${level}`)
     // console.log(`Remaining EXP: ${remainingEXP}`)
+}
+
+function maxLevelOutput(){
+    // When the profile mentioned is at the max level
+    output.innerHTML = `
+    <div class="description">At level 50, you have maxed out the carpentry skill. </div>
+    `
 }
 
 // <p>If you sell the Condensed fermento back to NPCs, it would cost ${(totalCost - COND_FERM_SELL * (fermentos/9)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
